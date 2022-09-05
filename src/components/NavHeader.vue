@@ -75,15 +75,21 @@ export default {
 @import url(../assets/static/css/modern-menu.scss);
 @import url(../assets/static/css/preview.scss);
 .nav-header{
+    position: relative;
+    z-index: 999;
     .container{
          height: 112px;
          display: flex;
+         position: fixed;
+         top:0;
          justify-content: space-between;
          align-items: center;
+         background: #fff;
          .header-logo{
             margin-left: 20px;
-         }    
-    }
+         }
+    }    
 }
+
 </style>
 

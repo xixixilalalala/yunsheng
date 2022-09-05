@@ -136,6 +136,11 @@
             15188640848  王总
           </div>
         </div>
+        <div id="dt">
+          <div id="allmap" ref="allmap">
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -146,7 +151,27 @@ export default {
     name:"IndexL",
     components:{
     Banner,
-  }
+  },
+  methods:{
+    map(){
+        let map=new window.BMap.Map(this.$refs.allmap)
+        map.centerAndZoom(new window.BMap.Point(120.143803,30.274117),15)
+        map.addControl(new window.BMap.MapTypeControl({
+            mapTypes:[
+                window.BMAP_NORMAL_MAP,
+                window.BMAP_HYBRID_MAP
+            ]
+        }))
+        map.addControl(new window.BMap.ScaleControl());
+        map.addControl(new window.BMap.ZoomControl());
+        map.setCurrentCity('杭州')
+        map.enableScrollWheelZoom(true)
+        
+    }
+   },
+   mounted(){
+    this.map()
+   }
 }
 </script>
 <style lang="scss">
@@ -155,6 +180,9 @@ export default {
   // background-repeat: no-repeat;
   // background-size: cover;
   // background-attachment: fixed;
+  .banner{
+    margin-top: 112px;
+  }
   .index-detail{
     .detail-title{
       .fwxm{
@@ -347,6 +375,23 @@ export default {
         height: 450px;
         margin-bottom: 50px;
         margin-top: 20px;
+      }
+      #dt{
+        font-family: "Avenir",Arial, Helvetica, sans-serif;
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+        color: #2c3e50;
+        height: 250px;
+        width: 500px;
+        display: inline-block;
+        float: right;
+        margin-top: -150px;
+        margin-right: 150px;
+        #allmap{
+          height: 250px;
+          width: 500px;
+          overflow: hidden;
+        }
       }
       .lxwm-detail{
         padding-top: 150px;
